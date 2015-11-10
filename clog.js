@@ -20,8 +20,10 @@ var query = getQueryValue ("clog");
 @param message message to output when criteria matches conditions
 @param criteria calling function or matching name necessary in order to output message
 */
+
 var clog = function (message, criteria) {
-	if (query == true || arguments.callee.caller.name == query || query == criteria) {
+	/* if (query == "*" || arguments.callee.caller.name == query || query == criteria) { */
+	if (query == "*" || query == criteria) {
 		console.log (message);
 	}
 };

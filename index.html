@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <!-- Favicon -->
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="assets/img/clog.ico">
 
 <!-- Google Analytics -->
 <script>
@@ -22,7 +22,6 @@ ga("send", "pageview");
 
 <!-- Google Fonts -->
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,600">
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:900'>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -34,6 +33,16 @@ ga("send", "pageview");
 <link rel="stylesheet" href="style.css">
 
 <style>
+li {
+	line-height:200%;
+}
+
+p {
+	line-height:300%;
+}
+.navbar-text {
+	font-weight:400;
+}
 </style>
 
 </head><body id="top">
@@ -50,14 +59,83 @@ ga("send", "pageview");
 
 <div class="collapse navbar-collapse" id="collapse">
 <!-- http://getbootstrap.com/components/#navbar -->
+<p class="navbar-text pull-right">Nasty JavaScript Debugging</p>
 </div><!-- .navbar-collapse -->
 </nav>
 
-<header></header>
+<header>
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+<p>For those of us who maintain the presumably nasty debugging habit of littering JavaScript source code with <code>console.log</code> statements; step by step instructions for a simpler solution:</p>
 
-<main></main>
+<ul>
+<li>Include <code>clog.js</code></li>
+<li>use <code>clog (message, criteria)</code> where you'd normally use <code>console.log (message)</code></li>
+<li>browse to the page you're debugging with a clog query key (e.g.: <code>?clog</code>) whose value matches your desired criteria (e.g.: <code>http://example.com/index.html?clog=criteria</code>) to log messages with matching criteria to the console</li>
+</ul>
 
-<footer></footer>
+<p>That's it! Use <code>?clog=*</code> to log all messages to the console.</p>
+</div>
+</div>
+</div>
+</header>
+
+<main>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<p>The following examples can be found in this page's source code. Try the following links with the console open:</p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-2">
+
+<div class="list-group">
+<a class="list-group-item" href="?clog=*">?clog=*</a>
+<a class="list-group-item" href="?clog=A">?clog=A</a>
+<a class="list-group-item" href="?clog=B">?clog=B</a>
+</div>
+
+</div>
+<div class="col-sm-10">
+
+<pre>
+function functionName () {
+	clog ("This message appears in the console if ?clog=A or ?clog=*", "A");
+};
+
+clog ("This message only appears in the console if ?clog=*");
+
+functionName ();
+</pre>
+
+</div>
+</div>
+</div>
+
+</main>
+
+<footer>
+<div class='container'>
+
+<hr>
+
+<div class='row'>
+<div class='col-sm-6'>
+
+<p class='small'>&copy; <!--1983 - --><?php echo date ("Y") ?> <a href="http://prosperful.com">Prosperful</a>. All rights reserved.</p>
+
+</div>
+<div class='col-sm-6'>
+
+<p class='text-right small'>Designed with <span class="heart"><i class="fa fa-heart"></i></span> and developed with <i class="fa fa-coffee"></i></p>
+
+</div>
+</div>
+</div>
+</footer>
 
 <!-- Back to Top -->
 <a href="#top" class="topper-top" id="topper"></a>
@@ -73,13 +151,13 @@ ga("send", "pageview");
 
 <script>
 $ (document).ready (function () {
-	clog ("This message originates from an anonymous function and will never output unless an empty hash is present.");
-	
-	function A () {
-		clog ("This message originates from the A function. Without a matching criteria argument then the function must be declared 'function A' instead of 'A = function' to output.");
+	function functionName () {
+		clog ("This message appears in the console if ?clog=A or ?clog=*", "A");
 	};
 	
-	A ();
+	clog ("This message only appears in the console if ?clog=*");
+	
+	functionName ();
 });
 </script>
 

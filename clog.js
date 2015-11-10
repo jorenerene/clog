@@ -16,9 +16,9 @@ function getQueryValue (key) {
 var query = getQueryValue ("clog");
 
 /**
-@description Nasty JavaScript Debugging.
-@param message message to output when criteria matches conditions
-@param criteria calling function or matching name necessary in order to output message
+Nasty JavaScript Debugging. Shorthand for filtering console.log
+@param {message} - Output when criteria matches conditions
+@param {criteria} - Query string's matching value necessary to log message to console
 */
 
 var clog = function (message, criteria) {

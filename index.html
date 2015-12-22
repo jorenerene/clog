@@ -35,13 +35,28 @@ ga("send", "pageview");
 <style>
 li {
 	line-height:200%;
+	padding-left:10px;
 }
 
 p {
-	line-height:300%;
+	line-height:200%;
 }
+
 .navbar-text {
 	font-weight:400;
+}
+
+p.lead {
+	line-height:200%;
+}
+
+ol {
+	list-style-type:upper-roman;
+}
+
+.collapsing {
+	-webkit-transition: none;
+	transition: none;
 }
 </style>
 
@@ -67,13 +82,13 @@ p {
 <div class="container">
 <div class="row">
 <div class="col-xs-12">
-<p>For those of us who maintain the presumably nasty debugging habit of littering JavaScript source code with <code>console.log</code> statements; step by step instructions for a simpler solution:</p>
+<p class="lead">For those of us who maintain the presumably nasty debugging habit of littering JavaScript source code with <code>console.log</code> statements:</p>
 
-<ul>
+<ol>
 <li>Include <code>clog.js</code></li>
 <li>use <code>clog (message, criteria)</code> where you'd normally use <code>console.log (message)</code></li>
 <li>browse to the page you're debugging with a clog query key (e.g.: <code>?clog</code>) whose value matches your desired criteria (e.g.: <code>http://example.com/index.html?clog=criteria</code>) to log messages with matching criteria to the console</li>
-</ul>
+</ol>
 
 <p>That's it! Use <code>?clog=*</code> to log all messages to the console.</p>
 </div>
